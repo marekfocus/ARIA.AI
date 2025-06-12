@@ -1,0 +1,6 @@
+{
+  "mistral_endpoint": "http://localhost:5000/mistral",
+  "perplexity_api_key": "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",
+  "monitor_mode": true,
+  "debug": true
+}
