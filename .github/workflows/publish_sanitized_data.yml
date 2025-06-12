@@ -1,0 +1,28 @@
+# .github/workflows/publish_sanitized_data.yml
+
+name: Publikuj dane do aria-public-data
+
+on:
+  schedule:
+    - cron: '*/1 * * * *'  # Co 1 minutę
+  workflow_dispatch:
+
+jobs:
+  export:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Pobierz repo
+        uses: actions/checkout@v4
+
+      - name: Skopiuj tylko wybrane dane (raporty + alerty)
+        run: |
+          mkdir -p export
+          cp output/raporty/*.json export/ || true
+          cp output/raporty/*.pdf export/ || true
+          cp output/alerty/*.json export/ || true
+
+      - name: Wgraj do aria-public-data
+        uses: actions/upload-artifact@v3
+        with:
+          name: sanitized_report
+          path: export
