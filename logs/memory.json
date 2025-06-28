@@ -1,0 +1,11 @@
+{
+  "timestamp": "2025-06-29T00:55:20.193387",
+  "analyzed_files": [
+    "test.txt"
+  ],
+  "results": {
+    "test.txt": {
+      "error": "Expecting value: line 1 column 1 (char 0)"
+    }
+  }
+}
